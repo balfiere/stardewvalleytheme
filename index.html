@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stardew valley theme</title>
+<link rel="shortcut icon" href="assets/favicon.ico">
+
+<!-- modified from this codepen: https://codepen.io/jsemedo/full/LYgGvyQ -->
+
+<!-- styling -->
+<link rel="stylesheet" href="style.css" type="text/css">
+
+</head>
+<body>
+
+	<!-- moving clouds-->
+	<div class="marquee">
+		<div class="clouds">
+			<img src="assets/clouds.webp" alt="clouds" />
+		</div>
+		<div class="clouds">
+			<img src="assets/clouds.webp" alt="clouds" />
+		</div>
+		<div class="clouds">
+			<img src="assets/clouds.webp" alt="clouds" />
+		</div>
+		<div class="clouds">
+			<img src="assets/clouds.webp" alt="clouds" />
+		</div>
+		<div class="clouds">
+			<img src="assets/clouds.webp" alt="clouds" />
+		</div>
+		<div class="clouds">
+			<img src="assets/clouds.webp" alt="clouds" />
+		</div>
+	</div>
+      
+	<!-- main box-->
+	<div class="menu">
+
+		<!-- tabs navigation-->
+		<div class="menu__tabs__container">
+			<button class="btn menu__tab menu__tab--active disabled" data-tooltip="Inventory" onclick="openTab(event,'inventory')">
+			<img src="assets/backpack.svg" class="menu__img" alt="inventory_tab_image" />
+			</button>
+			<button class="btn menu__tab disabled" data-tooltip="Skills" onclick="openTab(event,'skills')">
+			<img src="assets/avatar.svg" class="menu__img" alt="inventory_tab_image" />
+			</button>
+			<button class="btn menu__tab disabled" data-tooltip="Socials" onclick="openTab(event,'socials')">
+			<img src="assets/heart.svg" class="menu__img" alt="inventory_tab_image" />
+			</button>
+			<button class="btn menu__tab disabled" data-tooltip="Map" onclick="openTab(event,'map')">
+			<img src="assets/map.svg" class="menu__img" alt="inventory_tab_image" />
+			</button>
+			<button class="btn menu__tab disabled" data-tooltip="Crafting" onclick="openTab(event,'crafting')">
+			<img src="assets/tool.svg" class="menu__img" alt="inventory_tab_image" />
+			</button>
+			<button class="btn menu__tab disabled" data-tooltip="Collection" onclick="openTab(event,'collection')">
+			<img src="assets/bag.svg" class="menu__img" alt="inventory_tab_image" />
+			</button>
+			<button class="btn menu__tab disabled" data-tooltip="Options" onclick="openTab(event,'options')">
+			<img src="assets/console.svg" class="menu__img" alt="inventory_tab_image" />
+			</button>
+			<button class="btn menu__tab disabled" data-tooltip="Exit Game">
+			<a href="https://neocities.org/">
+			<img src="assets/close.svg" class="menu__img" alt="inventory_tab_image" /></a>
+			</button>
+		</div>
+
+		<!-- main content container-->
+		<div class="main">
+			<div id="inventory" class="content">
+				<h1>Stardew Valley Theme</h1>
+				<h2>Instructions</h2>
+				<p>download this theme <a target="_blank" href=""</p>
+				<h2>Credit</h2>
+				<p>this theme is modified from the codepen <a target="_blank" href="https://codepen.io/jsemedo/full/LYgGvyQ">Stardew Valley Inventory</a> by <a target="_blank" href="https://codepen.io/jsemedo">jsemedo</a>. the main font is <a target="_blank" href="https://fontstruct.com/fontstructions/show/1859282/svthin-3">SVThinHu</a> by <a target="_blank" href="https://fontstruct.com/fontstructors/1847645/kroszki">kroszki</a>. the h1 level font is <a target="_blank" href="https://www.dafont.com/stardew-valley.font">Stardew Valley</a> by <a target="_blank" href="https://www.dafont.com/eliot-truelove.d1302">Eliot Truelove</a>. the h2 and h3 level font is <a target="_blank" href="https://fontstruct.com/fontstructions/show/1859228/svboldhu">SVBoldHu</a> by <a target="_blank" href="https://fontstruct.com/fontstructors/1847645/kroszki">kroszki</a>.</p>
+			</div>
+			
+			<div id="skills" class="content" style="display: none;">
+				<h2>Skills</h2>
+				<p>skills tab</p> 
+			</div>
+			
+			<div id="socials" class="content" style="display: none;">
+				<h2>Socials</h2>
+				<p>socials tab</p>
+			</div>
+			
+			<div id="map" class="content" style="display: none;">
+				<h2>Map</h2>
+				<p>map tab</p>
+			</div>
+			
+			<div id="crafting" class="content" style="display: none;">
+				<h2>Crafting</h2>
+				<p>crafting tab</p>
+			</div>
+			
+			<div id="collection" class="content" style="display: none;">
+				<h2>Collection</h2>
+				<p>collection tab</p>
+			</div>
+			
+			<div id="options" class="content" style="display: none;">
+				<h2>Options</h2>
+				<p>options tab</p>
+			</div>
+		</div>
+
+	</div><!-- end main box-->
+
+	<!-- navigation javascript -->
+    <script>
+        function openTab(evt, tabName) {
+            // show correct content block
+            var i;
+            var x = document.getElementsByClassName("content");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+            }
+            document.getElementById(tabName).style.display = "block";  
+
+			// show active tab
+            tablinks = document.getElementsByClassName("menu__tab");
+            for (i = 0; i < x.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" menu__tab--active", "");
+            }
+            evt.currentTarget.className += " menu__tab--active";
+        }
+    </script>
+  </body>
+</html>

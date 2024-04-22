@@ -1,0 +1,315 @@
+/*-- variables --*/
+
+:root {
+	--container_color: #ffc878;
+	--container_color2: #f8ba70;
+	--container_color3: #eba867;
+	--text_color: #331f28;
+	--text_shadow: #ce9c5f;
+	--gradient-bg: linear-gradient(180deg, var(--container_color) 0%, var(--container_color2) 50%, var(--container_color3) 100%);
+	--link: rgb(66, 120, 206);
+	--link-hover: rgb(26, 185, 56);
+}
+
+/*-- fonts --*/
+
+@font-face {
+	font-family: 'SVBoldHu';
+	src: url('assets/SVBoldHu.woff2') format('woff2'),
+		url('assets/SVBoldHu.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'SVThinHu';
+	src: url('assets/SVThinHu.woff2') format('woff2'),
+		url('assets/SVThinHu.woff') format('woff');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Stardew Valley';
+	src: url('assets/StardewValley-Regular.woff2') format('woff2'),
+		url('assets/StardewValley-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Stardew Valley All Caps';
+	src: url('assets/StardewValley-AllCaps.woff2') format('woff2'),
+		url('assets/StardewValley-AllCaps.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+/*-- body --*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	cursor: url("assets/cursor.webp"), auto;
+}
+
+body {
+	background-image: url("assets/bg.webp");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: SVThinHu;
+	font-size: 28px;
+	color: var(--text_color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	padding: 2em;
+}
+
+a {
+	color: var(--link);
+	transition: all 0.3s ease;
+	&:hover {
+		color: var(--link-hover);
+	}
+}
+
+b, strong {
+	font-family: SVBoldHu;
+	font-size: 14px;
+}
+
+.btn {
+	display: inline-block;
+	background-color: var(--container_color);
+	border: none;
+	border-radius: 16px;
+}
+
+h1 {
+	font-family: 'Stardew Valley All Caps';
+	font-size: 72px;
+	font-weight: 500;
+}
+
+h2, h3 {
+	font-family: SVBoldHu;
+}
+
+h2 {
+	font-size: 39px;
+}
+
+h3 {
+	font-size: 26px;
+}
+
+.disabled img {
+	pointer-events: none;
+}
+
+/*-- scrollbar --*/
+
+::-webkit-scrollbar {
+	width: 12px;
+	background: #db7812;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #ad520b;
+}
+
+/*-- moving clouds --*/
+
+.marquee {
+	z-index: -10;
+	position: fixed;
+	opacity: 0.8;
+	display: flex;
+	animation: marquee 150s linear infinite running;
+}
+
+.marquee .clouds {
+	width: 100%;
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+/*-- container --*/
+
+.menu {
+	width: 100%;
+	max-width: 1200px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+/*-- tabs --*/
+
+.menu__tabs__container {
+	padding-left: 32px;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	}
+
+.menu__tabs__container .menu__tab {
+	border-image-source: url("assets/tab_border.png");
+	border-style: solid;
+	border-width: 20px;
+	border-image-slice: 24 22;
+	border-image-repeat: round;
+	border-radius: 20px;
+	width: 80px;
+	height: 76px;
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+
+.menu__tabs__container .menu__tab--active {
+	height: 64px;
+}
+
+.menu__tabs__container .menu__tab .menu__img {
+	height: 40px;
+}
+
+/*-- main content --*/
+
+.menu__content {
+	width: 100%;
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	background: var(--gradient-bg);
+	border-radius: 28px;
+}
+
+.main {
+	border-image-source: url("assets/border.png");
+	padding: 1em;
+	border-style: solid;
+	border-width: 20px;
+	border-image-slice: 24 22;
+	border-image-repeat: round;
+	border-radius: 20px;
+	width: 100%;
+	height: 100%;
+	background: var(--gradient-bg);
+}
+
+/*-- tooltips --*/
+
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:before,
+[data-tooltip]:after {
+  visibility: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-tooltip]:before {
+	position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, calc(100% + 15px));
+	padding: 7px;
+	color: #fff;
+	content: attr(data-tooltip);
+	background-color: var(--container_color);
+	overflow: hidden;
+	white-space: nowrap;
+	font-family: SVThinHu;
+	font-size: 28px;
+	color: var(--text_color);
+	text-shadow: var(--text_shadow) -2px 1px;
+	filter: drop-shadow(5px 5px rgba(0, 0, 0, 0.3));
+	border-style: solid;
+	border-width: 20px;
+	border-image-slice: 24 22;
+	border-image-repeat: round;
+	border-radius: 20px;
+	border-image-source: url("assets/tooltip_border.png");
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+  visibility: visible;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  z-index: 120;
+}
+
+/*-- mobile --*/
+
+@media (max-width: 900px) {
+	body{
+		padding: 1em;
+	}
+
+	.menu {
+		flex-direction: row;
+	}
+
+	.menu__tabs__container {
+		margin-top: 32px;
+		width: 80px;
+		flex-direction: column;
+		align-items: flex-end;
+		padding-left: unset;
+		overflow: visible;
+	}
+
+	.menu__tabs__container .menu__tab {
+		border-image-source: url("assets/tab_border_side.png");
+		width: 66px;
+		height: 72px;
+		justify-content: unset;
+	}
+
+	 .menu__tabs__container .menu__tab--active {
+		 width: 54px;
+	}
+
+	.menu__tabs__container .menu__tab--active img {
+	}
+
+	 .menu__tabs__container .menu__tab .menu__img {
+		 height: 32px;
+	}
+	
+	.main {
+        height: 100%;
+		 overflow: auto;
+	}
+	
+	[data-tooltip]:before {
+		bottom: unset;
+		left: unset;
+		top: 0;
+		right: 0;
+		transform: translateX(calc(100% + 15px)) translateY(calc(-50% + 10px));
+	}
+}
