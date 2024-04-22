@@ -23,30 +23,21 @@
 }
 
 @font-face {
-	font-family: 'SVThinHu';
-	src: url('assets/SVThinHu.woff2') format('woff2'),
-		url('assets/SVThinHu.woff') format('woff');
-	font-weight: 100;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Stardew Valley';
-	src: url('assets/StardewValley-Regular.woff2') format('woff2'),
-		url('assets/StardewValley-Regular.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
 	font-family: 'Stardew Valley All Caps';
 	src: url('assets/StardewValley-AllCaps.woff2') format('woff2'),
 		url('assets/StardewValley-AllCaps.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
+}
+
+@font-face {
+    font-family: 'Stardew Valley';
+    src: url('assets/StardewValley.woff2') format('woff2'),
+        url('assets/StardewValley.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 /*-- body --*/
@@ -63,14 +54,23 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	font-family: SVThinHu;
-	font-size: 28px;
+	font-family: 'Stardew Valley';
+	font-size: 32px;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 	color: var(--text_color);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 100vh;
+	height: 100dvh;
+	width: 100dvw;
 	padding: 2em;
+}
+
+.content{
+	text-align: left;    
+
 }
 
 a {
@@ -83,7 +83,11 @@ a {
 
 b, strong {
 	font-family: SVBoldHu;
-	font-size: 14px;
+}
+
+code {
+	font-family: unset;
+	background-color:rgba(173, 81, 11, 0.349);
 }
 
 .btn {
@@ -109,10 +113,6 @@ h2 {
 
 h3 {
 	font-size: 26px;
-}
-
-.disabled img {
-	pointer-events: none;
 }
 
 /*-- scrollbar --*/
@@ -176,30 +176,22 @@ h3 {
 	border-image-slice: 24 22;
 	border-image-repeat: round;
 	border-radius: 20px;
-	width: 80px;
-	height: 76px;
+	width: 88px;
+	height: 84px;
 	position: relative;
 	display: flex;
 	justify-content: center;
 }
 
 .menu__tabs__container .menu__tab--active {
-	height: 64px;
+	height: 72px;
 }
 
 .menu__tabs__container .menu__tab .menu__img {
-	height: 40px;
+	height: 48px;
 }
 
 /*-- main content --*/
-
-.menu__content {
-	width: 100%;
-	display: grid;
-	grid-template-rows: 1fr 1fr;
-	background: var(--gradient-bg);
-	border-radius: 28px;
-}
 
 .main {
 	border-image-source: url("assets/border.png");
@@ -211,6 +203,7 @@ h3 {
 	border-radius: 20px;
 	width: 100%;
 	height: 100%;
+	overflow: auto;
 	background: var(--gradient-bg);
 }
 
@@ -234,14 +227,18 @@ h3 {
     bottom: 0;
     left: 50%;
     transform: translate(-50%, calc(100% + 15px));
-	padding: 7px;
+	padding: 10px;
+	font-family: 'Stardew Valley';
+	font-size: 32px;
+	line-height: 30px;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 	color: #fff;
 	content: attr(data-tooltip);
 	background-color: var(--container_color);
 	overflow: hidden;
 	white-space: nowrap;
-	font-family: SVThinHu;
-	font-size: 28px;
 	color: var(--text_color);
 	text-shadow: var(--text_shadow) -2px 1px;
 	filter: drop-shadow(5px 5px rgba(0, 0, 0, 0.3));
@@ -302,7 +299,7 @@ h3 {
 	
 	.main {
         height: 100%;
-		 overflow: auto;
+		overflow: auto;
 	}
 	
 	[data-tooltip]:before {
@@ -310,6 +307,6 @@ h3 {
 		left: unset;
 		top: 0;
 		right: 0;
-		transform: translateX(calc(100% + 15px)) translateY(calc(-50% + 10px));
+		transform: translateX(calc(100% + 15px)) translateY(calc(-50% + 12px));
 	}
 }

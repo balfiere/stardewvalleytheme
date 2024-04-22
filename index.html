@@ -39,70 +39,104 @@
 	<!-- main box-->
 	<div class="menu">
 
-		<!-- tabs navigation-->
+		<!-- tab navigation-->
 		<div class="menu__tabs__container">
-			<button class="btn menu__tab menu__tab--active disabled" data-tooltip="Inventory" onclick="openTab(event,'inventory')">
-			<img src="assets/backpack.svg" class="menu__img" alt="inventory_tab_image" />
+			<button class="btn menu__tab menu__tab--active" data-tooltip="Inventory" onclick="openTab(event,'inventory')">
+				<img src="assets/backpack.svg" class="menu__img" alt="inventory_tab_image" />
 			</button>
-			<button class="btn menu__tab disabled" data-tooltip="Skills" onclick="openTab(event,'skills')">
-			<img src="assets/avatar.svg" class="menu__img" alt="inventory_tab_image" />
+			<button class="btn menu__tab" data-tooltip="Skills" onclick="openTab(event,'skills')">
+				<img src="assets/avatar.svg" class="menu__img" alt="inventory_tab_image" />
 			</button>
-			<button class="btn menu__tab disabled" data-tooltip="Socials" onclick="openTab(event,'socials')">
-			<img src="assets/heart.svg" class="menu__img" alt="inventory_tab_image" />
+			<button class="btn menu__tab" data-tooltip="Socials" onclick="openTab(event,'socials')">
+				<img src="assets/heart.svg" class="menu__img" alt="inventory_tab_image" />
 			</button>
-			<button class="btn menu__tab disabled" data-tooltip="Map" onclick="openTab(event,'map')">
-			<img src="assets/map.svg" class="menu__img" alt="inventory_tab_image" />
+			<button class="btn menu__tab" data-tooltip="Map" onclick="openTab(event,'map')">
+				<img src="assets/map.svg" class="menu__img" alt="inventory_tab_image" />
 			</button>
-			<button class="btn menu__tab disabled" data-tooltip="Crafting" onclick="openTab(event,'crafting')">
-			<img src="assets/tool.svg" class="menu__img" alt="inventory_tab_image" />
+			<button class="btn menu__tab" data-tooltip="Crafting" onclick="openTab(event,'crafting')">
+				<img src="assets/tool.svg" class="menu__img" alt="inventory_tab_image" />
 			</button>
-			<button class="btn menu__tab disabled" data-tooltip="Collection" onclick="openTab(event,'collection')">
-			<img src="assets/bag.svg" class="menu__img" alt="inventory_tab_image" />
+			<button class="btn menu__tab" data-tooltip="Collection" onclick="openTab(event,'collection')" style="display: none;">
+				<img src="assets/bag.svg" class="menu__img" alt="inventory_tab_image" />
 			</button>
-			<button class="btn menu__tab disabled" data-tooltip="Options" onclick="openTab(event,'options')">
-			<img src="assets/console.svg" class="menu__img" alt="inventory_tab_image" />
+			<button class="btn menu__tab" data-tooltip="Options" onclick="openTab(event,'options')">
+				<img src="assets/console.svg" class="menu__img" alt="inventory_tab_image" />
 			</button>
-			<button class="btn menu__tab disabled" data-tooltip="Exit Game">
-			<a href="https://neocities.org/">
-			<img src="assets/close.svg" class="menu__img" alt="inventory_tab_image" /></a>
+			<button class="btn menu__tab" data-tooltip="Exit Game">
+				<a href="https://kwaamfan.neocities.org/main/"><img src="assets/close.svg" class="menu__img" alt="inventory_tab_image" /></a>
 			</button>
 		</div>
 
-		<!-- main content container-->
+		<!-- main content container -->
 		<div class="main">
+
+			<!-- inventory tab -->
 			<div id="inventory" class="content">
 				<h1>Stardew Valley Theme</h1>
+
 				<h2>Instructions</h2>
-				<p>download this theme <a target="_blank" href=""</p>
+				<p>download this theme <a target="_blank" href="https://github.com/balfiere/stardewvalleytheme">here</a>.</p>
+
+				<h3>tab navigation</h3>
+				<p>this theme comes with 8 preconfigured navigation buttons. 7 of them replaces the content in this main window, and the last one opens a new link. the tooltip text appears inside the attribute <code>data-tooltip</code> and can be changed to whatever you want.</p>
+				<p>if you want a button to open a link to a different page, remove the <code>onclick</code> attribute. then wrap the image inside the button with your desired link. search <code>Exit Game</code> inside <code>index.html</code> to see an example of this.</p>
+				<p>if you want a button to open a 'tab' (aka switch out the contents of this window) it needs to have <code> onclick="openTab(event,'tab')"</code>. <code>tab</code> corresponds to the div id of the tab content. see next section for more details.</p>
+
+				<h3>tab content</h3>
+				<p>the content for this whole page appears in same .html page, using vanilla javascript to control what tab appears active. the content for each tab appears inside a div with the class <code>content</code>. so for example, the contents of this "inventory" tab appears inside <code>&lt;div id="inventory" class="content"&gt;...&lt;/div&gt;</code>. the div id must be unique and match the second argument of the <code>openTab</code> function mentioned above. for example, the button for the "inventory" tab has the attribute <code>onclick="openTab(event,'inventory')"</code>. the <code>inventory</code> argument tells the page to display the div that has the id <code>inventory</code> when the button is clicked.</p>
+
+				<h3>changing the number of buttons and tabs</h3>
+				<p>the height of the image inside the tab button is 48px on desktop and 36px on mobile. if you want to change the image in the buttons, you can find lots of 48x48px Stardew Valley icons on the <a target="_blank" href="https://stardewvalleywiki.com/Stardew_Valley_Wiki">Stardew Valley wiki</a>.</p>
+				<p>if you don't need all 8 buttons, you can delete the button or hide it. the "collection" tab is currently hidden to give an example of this. search <code>collection</code> inside <code>index.html</code> and you can see that <code> style="display: none;"</code> has been added to "collection" button.</p>
+				<p>to add more buttons, add:</p>
+				<code>
+					&lt;button class="btn menu__tab" data-tooltip="tooltip here"&gt;
+					&lt;img src="assets/link to image here" class="menu__img" alt="alt text for image here" /&gt;
+					&lt;/button&gt;
+				</code>
+				<p>inside <code>&lt;div class="menu__tabs__container"&gt;...&lt;/div&gt;</code>. don't forget to add either <code> onclick="openTab(event,'tab')"</code> inside the button tag to add a new tab or wrap the image with a link to open a new link. if you're adding a new tab, add:</p>
+				<code>
+					&lt;div id="tab" class="content" style="display: none;"&gt;
+					&lt;p&gt;some content here&lt;/p&gt;
+					&lt;/div&gt;
+				</code>
+				<p>inside <code>&lt;div class="main"&gt;...&lt;/div&gt;</code></p>
+
 				<h2>Credit</h2>
-				<p>this theme is modified from the codepen <a target="_blank" href="https://codepen.io/jsemedo/full/LYgGvyQ">Stardew Valley Inventory</a> by <a target="_blank" href="https://codepen.io/jsemedo">jsemedo</a>. the main font is <a target="_blank" href="https://fontstruct.com/fontstructions/show/1859282/svthin-3">SVThinHu</a> by <a target="_blank" href="https://fontstruct.com/fontstructors/1847645/kroszki">kroszki</a>. the h1 level font is <a target="_blank" href="https://www.dafont.com/stardew-valley.font">Stardew Valley</a> by <a target="_blank" href="https://www.dafont.com/eliot-truelove.d1302">Eliot Truelove</a>. the h2 and h3 level font is <a target="_blank" href="https://fontstruct.com/fontstructions/show/1859228/svboldhu">SVBoldHu</a> by <a target="_blank" href="https://fontstruct.com/fontstructors/1847645/kroszki">kroszki</a>.</p>
+				<p>this theme is modified from the codepen <a target="_blank" href="https://codepen.io/jsemedo/full/LYgGvyQ">Stardew Valley Inventory</a> by <a target="_blank" href="https://codepen.io/jsemedo">jsemedo</a>. the main font is <a target="_blank" href="https://fontstruct.com/fontstructions/show/1254619/stardew_valley">Stardew Valley</a> by <a target="_blank" href="https://fontstruct.com/fontstructors/1310859/rrdome">RRDome</a>. the h1 level font is <a target="_blank" href="https://www.dafont.com/stardew-valley.font">Stardew Valley ALL CAPS</a> by <a target="_blank" href="https://www.dafont.com/eliot-truelove.d1302">Eliot Truelove</a>. the h2 and h3 level font is <a target="_blank" href="https://fontstruct.com/fontstructions/show/1859228/svboldhu">SVBoldHu</a> by <a target="_blank" href="https://fontstruct.com/fontstructors/1847645/kroszki">kroszki</a>.</p>
 			</div>
 			
+			<!-- skill tab -->
 			<div id="skills" class="content" style="display: none;">
 				<h2>Skills</h2>
 				<p>skills tab</p> 
 			</div>
 			
+			<!-- socials tab -->
 			<div id="socials" class="content" style="display: none;">
 				<h2>Socials</h2>
 				<p>socials tab</p>
 			</div>
 			
+			<!-- map tab -->
 			<div id="map" class="content" style="display: none;">
 				<h2>Map</h2>
 				<p>map tab</p>
 			</div>
 			
+			<!-- crafting tab -->
 			<div id="crafting" class="content" style="display: none;">
 				<h2>Crafting</h2>
 				<p>crafting tab</p>
 			</div>
 			
+			<!-- collection tab -->
 			<div id="collection" class="content" style="display: none;">
 				<h2>Collection</h2>
-				<p>collection tab</p>
+				<p>collection tab. this tab currently cannot be displayed because button that correlates to it currently has <code> style="display: none;"</code> added to it. remove it to be able to open this tab.</p>
 			</div>
 			
+			<!-- options tab -->
 			<div id="options" class="content" style="display: none;">
 				<h2>Options</h2>
 				<p>options tab</p>
